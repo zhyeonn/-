@@ -1,0 +1,58 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 1000px;
+}
+button{
+  background: none;
+  border: none;
+  color: rgb(44, 48, 145);
+}
+button:hover{
+  color: white;
+  background-color: rgb(44, 48, 145);
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+header{
+  text-align: right;
+}
+nav{
+  background-color: rgb(44, 48, 145);
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  align-items: center;
+  height: 72px;
+}
+.nav_logo{
+  text-align: center;
+}
+.nav_menu{
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  align-items: center;
+}
+.nav_submenu{
+  position: absolute;
+  top: 100px;
+  z-index: 99;
+}
+.carousel-inner img{
+  height: 500px;
+}
+
+@media screen and (max-width:48rem) {
+  .nav_menu{
+    grid-template-columns: 1fr;
+  }
+  .nav_menu ul{
+    grid-template-columns: 1fr;
+  }
+}
