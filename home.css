@@ -1,0 +1,168 @@
+.login {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+.login a {
+  text-decoration: none;
+  padding: 12px 24px;
+  color: black;
+}
+.login a:hover {
+  background-color: rgb(44, 48, 145);
+  color: white;
+}
+body {
+  margin: 0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: rgb(44, 48, 145);
+  padding: 8px 12px;
+  position: sticky;
+  top: 0;
+}
+.menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+.menu li {
+  /* padding: 8px 30px; */
+}
+.menu li:hover > a {
+  color: rgb(44, 48, 145);
+  background-color: white;
+  border-radius: 4px;
+}
+.menu > li > a {
+  padding: 8px 38px;
+  text-align: center;
+}
+.menu > li {
+  position: relative;
+  display: inline-block;
+}
+.hiddenmenu {
+  /* min-width로 크기를 상위 메뉴와 맞춤*/
+  /* width로 써도 상관없긴한데 100%가 중요함 */
+  width: 100%; 
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(44, 48, 145);
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+.hiddenmenu > li {
+  padding: 12px 18px;
+  /* 나도 첨알았는데 li태그는 center가 안되고, inline-block로 설정해주면 center가 된다네 */
+  display: inline-block;
+}
+.hiddenmenu > li:hover {
+  background-color: white;
+  color: rg;
+}
+.menu > li {
+  position: relative;
+}
+.hiddenmenu > li > a {
+  display: flex;
+  width: 100%;
+}
+.menu > li:hover .hiddenmenu {
+  display: block;
+  position: absolute;
+  /* 마우스 천천히 내리면 없어짐 -> 36px -> 30px로 조정함 */
+  top: 30px;
+}
+
+.icons {
+  color: white;
+  padding-left: 0;
+  margin: 0;
+  font-size: 30px;
+  position: relative;
+  right: 30px;
+}
+.hamburger {
+  position: absolute;
+  right: 32px;
+  display: none; /* 화면이 작아졌을 때만 나오도록 */
+}
+
+.main {
+  text-align: center;
+}
+.wrap {
+  display: inline-block;
+  width: 1170px;
+}
+.a {
+  display: flex;
+  justify-content: center;
+}
+.vote {
+  width: 400px;
+  height: 422px;
+  border: 2px solid black;
+  text-align: center;
+  margin: 10px 10px;
+}
+.double {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.notice {
+  width: 400px;
+  height: 200px;
+  border: 2px solid black;
+  text-align: center;
+  margin: 10px;
+}
+.board {
+  width: 400px;
+  height: 200px;
+  border: 2px solid black;
+  margin: 10px;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  background-color: rgb(44, 48, 145);
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .menu li {
+    width: 100%;
+    text-align: center;
+  }
+  .icons {
+    justify-content: center;
+    width: 100%;
+  }
+  .hamburger {
+    display: block;
+  }
+}
