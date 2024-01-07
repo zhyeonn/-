@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="home.css?after" />
+    <link rel="stylesheet" href="/timetable.css">
     <script src="https://kit.fontawesome.com/f668b9b848.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -41,29 +42,83 @@
         <li class="dropdown">
           <button class="dropbtn">기타</button>
           <ul class="hiddenmenu">
-            <li><a href="./timetable.html">시간표</a></li>
+            <li><a href="">시간표</a></li>
           </ul>
         </li>
       </ul>
       <button id="hamburger"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
-    <main class="main">
-      <div class="wrap">
+    <main>
+      <div>
+        <h3>1학년 시간표</h3>
         <div>
-
+          <button class="addTime"><i class="fa-solid fa-plus"></i></button>
+  
         </div>
-        <br />
-        <div class="a">
-          <div class="vote"><h4>투표</h4></div>
-          <div class="double">
-            <div class="notice"><h4>공지사항</h4></div>
-            <div class="board"><h4>게시판</h4></div>
-          </div>
-        </div>
+        <table id="timetable-1">
+          <tr>
+            <th>시간</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+          </tr>
+        </table>
       </div>
+      <div>
+        <h3>2학년 시간표</h3>
+        <div>
+          <button class="addTime"><i class="fa-solid fa-plus"></i></button>
+  
+        </div>
+        <table id="timetable-2">
+          <tr>
+            <th>시간</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <h3>3학년 시간표</h3>
+        <div>
+          <button class="addTime"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <table id="timetable-3">
+          <tr>
+            <th>시간</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <h3>4학년 시간표</h3>
+        <div>
+          <button class="addTime"><i class="fa-solid fa-plus"></i></button>
+  
+        </div>
+        <table id="timetable-4">
+          <tr>
+            <th>시간</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+          </tr>
+        </table>
+      </div>
+      
     </main>
-    <br />
     <footer>
       <div class="footer_title">
         <h2>한국해양대학교 데이터사이언스</h2>
@@ -108,6 +163,52 @@
       </div>
     </footer>
 
+    <div class="inputTime">
+      <h3>강의 정보 입력</h3>
+      <div>강의명</div>
+      <input type="text" id="lecture_name"/>
+
+      <div>요일</div>
+      <input type="radio" name="radio" value="월"/>월
+      <input type="radio" name="radio" value="화"/>화
+      <input type="radio" name="radio" value="수"/>수
+      <input type="radio" name="radio" value="목"/>목
+      <input type="radio" name="radio" value="금"/>금
+
+      <div>시작 시간</div>
+      <select id="start_time">
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+      </select>
+      
+      <div>종료 시간</div>
+      <select id="end_time">
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+      </select>
+
+      <div>컬러 선택</div>
+      <input type="color" id="select_color"/>
+
+      <div class="buttonArea">
+        <button id="completeTime">완료</button>
+      </div>
+    </div>
     <script src="/main.js"></script>
+    <script src="./timetable.js"></script>
   </body>
 </html>

@@ -63,8 +63,10 @@ body {
   display: inline-block;
 }
 .hiddenmenu {
-  width: 100%; 
-  display: none;
+  width: 100%;
+  display: none; 
+  flex-direction: column;
+  top: 30px;
   position: absolute;
   list-style: none;
   padding: 0;
@@ -91,11 +93,7 @@ body {
   width: 100%;
 }
 
-.dropdown:hover .hiddenmenu {
-  display: flex;
-  flex-direction: column;
-  top: 30px;
-}
+
 
 .icons {
   color: white;
