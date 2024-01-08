@@ -3,6 +3,7 @@ main{
   grid-template-columns: 1fr 1fr;
   place-items: center;
   margin: 100px;
+  column-gap: 1rem;
 }
 main > div{
   text-align: center;
@@ -33,6 +34,7 @@ th, td, tr {
 td{
   width: 100px;
   color: white;
+  position: relative;
 }
 th {
   padding: 12px 24px;
@@ -74,3 +76,17 @@ th {
   color: white;
   background-color: rgb(44,48,145);
 }
+
+.btns{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.btns button{
+  padding: 4px 8px;
+  font-size: 16px;
+}
+.btns button:hover{
+  background: rgb(44,48,145);
+}
+
