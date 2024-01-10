@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Test Merge</title>
+<style type="text/css">
+td {border: solid 1px black; background:gray; padding:5px; margin:10px; }
+</style>
+</head>
+<body>
+
+<table>
+<tr>
+<td id="cell-1-1" onclick="merge(this);">a</td>
+<td id="cell-1-2" onclick="merge(this);">b</td>
+<td id="cell-1-3" onclick="merge(this);">c</td>
+<td id="cell-1-4" onclick="merge(this);">d</td>
+</tr>
+<tr>
+<td id="cell-2-1" onclick="merge(this);">e</td>
+<td id="cell-2-2" onclick="merge(this);">f</td>
+<td id="cell-2-3" onclick="merge(this);">g</td>
+<td id="cell-2-4" onclick="merge(this);">h</td>
+</tr>
+<tr>
+<td id="cell-3-1" onclick="merge(this);">i</td>
+<td id="cell-3-2" onclick="merge(this);">j</td>
+<td id="cell-3-3" onclick="merge(this);">k</td>
+<td id="cell-3-4" onclick="merge(this);">l</td>
+</tr>
+<tr>
+<td id="cell-4-1" onclick="merge(this);">m</td>
+<td id="cell-4-2" onclick="merge(this);">n</td>
+<td id="cell-4-3" onclick="merge(this);">o</td>
+<td id="cell-4-4" onclick="merge(this);">p</td>
+</tr>
+</table>
+<input type="button" id="merge" value="merge" onclick="mergeHighlighted();" />
+
+</body>
+
+</html>
+
+<script language="javascript" type="text/javascript">
+    function merge(o) {
+        o.style.backgroundColor = "red";        
+    }
+
+    function mergeHighlighted() {
+        var tds = document.getElementsByTagName("td");
+        var firstCellId = "";
+        var mergedCells = "";
+        for (var i = 0; i < tds.length; i++) {
+            if (tds[i].style.backgroundColor == "red") {
+                mergedCells += tds[i].textContent;
+                if (firstCellId == "") {
+                    firstCellId = tds[i].id;
+                }
+                else {
+                    tds[i].style.backgroundColor = "gray";
+                    tds[i].style.display = "none";
+                    tds[i].textContent = "";
+                }
+            }
+        }
+        var firstCell = document.getElementById(firstCellId);
+        firstCell.textContent = mergedCells;
+        firstCell.style.backgroundColor = "gray";
+    }
+</script>

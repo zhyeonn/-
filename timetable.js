@@ -43,10 +43,10 @@ $addTime.forEach((addbtn,index)=>{
 })
 
 $completeTime.addEventListener('click',()=>{
-  let lectureName = document.querySelector('#lecture_name').value;  
+   lectureName = document.querySelector('#lecture_name').value;  
   if(lectureName === ''){
     alert('강의명을 입력하세요');
-    return
+    rleteturn
   }
   
   let day = '';
@@ -101,7 +101,7 @@ const renderTimeTable = (lectureName,day,startTime,endTime,selectedColor) => {
 
   cellToMerge.innerHTML = `
   <div class = "btns">
-    <button onclick="editSchedule()"><i class="fa-solid fa-pen"></i></button>
+    <button onclick="editSchedule(startTime,endTime,day)"><i class="fa-solid fa-pen"></i></button>
     <button onclick="deleteSchedule()"><i class="fa-solid fa-trash"></i></button>
   </div>
   <div>${lectureName}</div>
@@ -124,10 +124,9 @@ const clearinputTimeModal = () => {
   document.querySelector('#select_color').value = 0;
 }
 
-const editSchedule = () => {
-  // 모달과 오버레이를 다시 연다. 입력한 정보와 시간을 채워서 연다.
-
-  // 문제는 겹치는 시간이 있을 때 등록안되게 해놓을텐데 여기도 적용됨
+const editSchedule = (startTime,endTime,day) => {
+  $overlay.classList.add('active');
+  $inputTime.style.display = 'inline-block';
 }
 
 const deleteSchedule = () => {
