@@ -12,13 +12,13 @@ main > div > div{
   display: flex;
   justify-content: flex-end;
 }
-.addTime{
+.addSchedule{
   color: black;
   background: none;
   padding: 12px 18px;
   font-size: 24px;
 }
-.addTime:hover{
+.addSchedule:hover{
   background: rgb(44,48,145);
   color: white;
 }
@@ -32,7 +32,7 @@ th, td, tr {
   text-align: center;
 }
 td{
-  width: 50px;
+  width: 100px;
   color: white;
   position: relative;
 }
@@ -41,7 +41,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.inputTime{
+.addScheduleModal{
   background-color: white;
   color: rgb(44,48,145);
   border: 1px solid black;
@@ -50,14 +50,14 @@ th {
   position: fixed;
   top: 30%;
   left: 40%;
-  z-index: 99;
+  z-index: 200;
   width: 400px;
   padding: 12px 18px;
 }
-.inputTime > h3{
+.addScheduleModal > h3{
   text-align: center;
 }
-.inputTime > div{
+.addScheduleModal > div{
   padding: 10px 0px;
 }
 #lecture_name{
@@ -78,6 +78,7 @@ th {
 }
 
 .btns{
+  display: flex;
   position: absolute;
   top: 0;
   right: 0;

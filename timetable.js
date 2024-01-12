@@ -1,7 +1,10 @@
 const $main = document.querySelector('main');
-const $addTime = document.querySelectorAll('.addTime');
-const $inputTime = document.querySelector('.inputTime');
+const $addScheduleBtn = document.querySelectorAll('.addSchedule');
+const $addScheduleModal = document.querySelector('.addScheduleModal');
 const $completeTime = document.querySelector('#completeTime');
+const $start_time = document.querySelector('#start_time');
+const $end_time = document.querySelector('#end_time');
+
 
 const days = ['월','화','수','목','금'];
 const getDay = (index) => {
@@ -31,26 +34,32 @@ makeTimetable(2);
 makeTimetable(3);
 makeTimetable(4);
 
+const openAddScheduleModal = () => {
+  $overlay.classList.add('strongActive');
+  $addScheduleModal.style.display = 'inline-block';
+}
+const closeAddScheduleModal = () => {
+  $overlay.classList.remove('strongActive');
+  $addScheduleModal.style.display = 'none';
+}
 
-let selectGrade = '';
-$addTime.forEach((addbtn,index)=>{
-  addbtn.addEventListener('click',()=>{
-    $inputTime.style.display ='inline-block';
-    $overlay.classList.add('active');
-    selectGrade = index+1;
-    console.log(selectGrade);
-  })
+let selectedGrade = '';
+$addScheduleBtn.forEach((button,index)=>{
+  button.addEventListener('click', ()=>{
+    selectedGrade = index+1;
+    console.log(selectedGrade);
+    openAddScheduleModal();
+  });
+})
+$completeTime.addEventListener('click',()=>{
+  addSchedule(selectedGrade);
 })
 
-$completeTime.addEventListener('click',()=>{
-   lectureName = document.querySelector('#lecture_name').value;  
-  if(lectureName === ''){
-    alert('강의명을 입력하세요');
-    rleteturn
-  }
-  
-  let day = '';
+const schedule = [];
 
+const addSchedule = (grade) => {
+  let lectureName = document.querySelector('#lecture_name').value;
+  let day = '';
   let isChecked = false;
   document.getElementsByName('radio').forEach((radio)=>{
     if(radio.checked === true){
@@ -58,81 +67,99 @@ $completeTime.addEventListener('click',()=>{
       isChecked = true;
     }
   })
+
+  let startTime = +$start_time.options[$start_time.selectedIndex].textContent;
+  let endTime = +$end_time.options[$end_time.selectedIndex].textContent;
+  let selectedColor = document.querySelector('#select_color').value;
+  if(lectureName === ''){
+    alert('강의명을 입력하세요');
+    return
+  }
   if(!isChecked){
     alert('요일을 선택하세요');
     return
   }
-
-  let startTime = +getstartTime();
-  let endTime = +getEndTime();
   if(startTime >= endTime){
     alert('종료시간이 시작시간보다 앞섭니다.');
     return
   }
-  let selectedColor = document.querySelector('#select_color').value;
-
-  // 시간표 나타내기
-  renderTimeTable(lectureName,day,startTime,endTime,selectedColor);
-  // render 후 초기화
-  clearinputTimeModal();
-}) 
-
-const getstartTime = () => {
-  const $start_time = document.querySelector('#start_time');
-  const startTime = $start_time.options[$start_time.selectedIndex].textContent;
-  return startTime
-}
-const getEndTime = () => {
-  const $end_time = document.querySelector('#end_time');
-  const endTime = $end_time.options[$end_time.selectedIndex].textContent;
-  return endTime
+  if(!addSubject(day,lectureName,startTime,endTime,selectedColor)){
+    return
+  };
+  console.log(schedule);
+  renderSchedule();
+  closeAddScheduleModal();
 }
 
-const renderTimeTable = (lectureName,day,startTime,endTime,selectedColor) => {  
-  const $timetable= document.querySelector(`#timetable-${selectGrade}`);
-  const cellToMerge = $timetable.rows[startTime-9+1].cells[days.indexOf(day)+1]
-  console.log(cellToMerge);
-  cellToMerge.setAttribute('rowspan',`${endTime-startTime}`)
-
-  // display : none 하니까 edit할때 안될 수도
-  for(let i=startTime+1; i<endTime; i++){
-    $timetable.rows[i-9+1].cells[days.indexOf(day)+1].style.display ='none';
+const addSubject = (day,lectureName,startTime,endTime,selectedColor) => {
+  if(duplicateCheck(day,startTime,endTime,selectedGrade)){
+    const subject = {'grade': selectedGrade, 'day' : day, 'lectureName' : lectureName, 'startTime' : startTime, 'endTime' : endTime, 'color':selectedColor}
+    schedule.push(subject)
+    return true
   }
-
-  cellToMerge.innerHTML = `
-  <div class = "btns">
-    <button onclick="editSchedule(startTime,endTime,day)"><i class="fa-solid fa-pen"></i></button>
-    <button onclick="deleteSchedule()"><i class="fa-solid fa-trash"></i></button>
-  </div>
-  <div>${lectureName}</div>
-  `
-  cellToMerge.style.backgroundColor = selectedColor;
+  else{
+    alert('해당 시간에 이미 수업이 있습니다.');
+    return false
+  }
 }
 
-// 현재 여러번 클릭하면 overlay active가 활성화된다.
-const clearinputTimeModal = () => {
-  $inputTime.style.display = 'none';
-  $overlay.classList.remove('active');
-  document.querySelector('#lecture_name').value ='';
-  document.getElementsByName('radio').forEach((radio)=>{
-    if(radio.checked === true){
-      radio.checked = false;
+const duplicateCheck = (day,startTime,endTime,selectedGrade) => {
+  let isDuplicateCheck = true;
+  schedule.forEach((v,i)=>{
+    const existingDay = v.day;
+    const existingStartTime = v.startTime;
+    const existingEndTime = v.endTime;
+    const existingGrade = v.grade;
+    if( (v.day === day) && (v.grade === selectedGrade) &&
+    ((startTime >= existingStartTime && startTime < existingEndTime )||
+    (endTime > existingStartTime && endTime <= existingEndTime) ||
+    (startTime <= existingStartTime && endTime >= existingEndTime)) ) { // 같은날 일 때
+      isDuplicateCheck = false;
+      return isDuplicateCheck
     }
   })
-  document.querySelector('#start_time').selectedIndex = 0;
-  document.querySelector('#end_time').selectedIndex = 0;
-  document.querySelector('#select_color').value = 0;
+  return isDuplicateCheck
 }
 
-const editSchedule = (startTime,endTime,day) => {
-  $overlay.classList.add('active');
-  $inputTime.style.display = 'inline-block';
+const renderSchedule = () => {
+  schedule.forEach((v,i)=>{
+    const cellMerge = document.querySelector(`#${v.day}-${v.grade}-${v.startTime}`);
+    cellMerge.setAttribute('rowspan',(v.endTime-v.startTime));
+    cellMerge.innerHTML = `
+    <div class = "btns">
+    <button onclick="editSchedule('${v.day}',${v.grade},${v.startTime},${v.endTime})"><i class="fa-solid fa-pen"></i></button>
+    <button onclick="deleteSchedule()"><i class="fa-solid fa-trash"></i></button>
+    </div>
+    <div>${v.lectureName}</div>
+    `
+    cellMerge.style.backgroundColor = v.color;
+    console.log('111');
+    //숨기기
+    for(let j=v.startTime+1; j<v.endTime; j++){
+      const hiddenCell = document.querySelector(`#${v.day}-${v.grade}-${j}`);
+      hiddenCell.style.display = 'none';
+    }
+  })
 }
 
-const deleteSchedule = () => {
-
+const editSchedule = (day,grade,startTime,endTime) => {
+  openAddScheduleModal();
+  // 해당 객체를 찾아서 삭제하고 완료버튼을 누른다. -> 다시 객체순회 렌더링 -> display : none 이 남아있어서 문제가있음
+  schedule.forEach((v,i)=>{
+    if((v.day === day) && (v.grade === grade) && (v.startTime == startTime) && (v.endTime === endTime) ){
+      schedule.splice(i,1);
+      console.log(schedule);
+    }
+  })
+  // 객체삭제후 해당 display 까지 원래대로 돌려놓는다.
+  const cancelMergeCell = document.querySelector(`#${day}-${grade}-${startTime}`);
+  cancelMergeCell.setAttribute('rowspan','');
+  cancelMergeCell.style.backgroundColor = 'white';
+  cancelMergeCell.textContent = '';
+  for(let i=startTime+1; i<endTime; i++){
+    document.querySelector(`#${day}-${grade}-${i}`).style.display = 'table-cell';
+  }
 }
+// 편집 버튼 누르면 해당 객체의 display 복구 시키고 다시 그리는 느낌
 
-const clearTimetable = () => {
-
-}
+// 나중에 편집할때 selectedGrade가 문제가 있으면 고쳐보고 안되면 애초에 add버튼을 한 개만 만들고 모달창에서 학년선택

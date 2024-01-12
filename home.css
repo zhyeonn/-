@@ -12,6 +12,16 @@ button{
   background-color: rgba(0, 0, 0, 0.5); /* 여기서 rgba의 마지막 값은 투명도를 나타냄 */
   display: block;
 }
+.overlay.strongActive{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 여기서 rgba의 마지막 값은 투명도를 나타냄 */
+  display: block;
+  z-index: 200;
+}
 .login {
   display: flex;
   flex-direction: row;
