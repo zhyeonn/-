@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+}
+.main {
+  text-align: center;
+}
+.wrap {
+  display: inline-block;
+  width: 1170px;
+}
+.container {
+  margin: 100px auto;
+  max-width: 500px;
+}
+.container table {
+  margin-left: auto;
+  margin-right: auto;
+}
+.container table th,
+table td {
+  height: 30px;
+  padding: 4px 12px;
+}
+.container table thead {
+  float: left;
+}
+.container table thead tr,
+.container table thead tr th {
+  display: block;
+}
+
+.container table tbody {
+  display: block;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+.container table tbody tr {
+  display: inline-block;
+}
+.container table tbody tr td {
+  display: block;
+}
+.join button {
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  background-color: rgb(44, 48, 145);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+}
+.join button:hover {
+  border: 3px solid rgb(44, 48, 145);
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+.btn td button {
+  width: 80px;
+  height: auto;
+  background-color: rgb(44, 48, 145);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn td button:hover {
+  border: 2px solid rgb(44, 48, 145);
+  color: black;
+  background-color: white;
+}

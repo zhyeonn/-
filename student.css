@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+.main {
+  text-align: center;
+}
+.wrap {
+  display: inline-block;
+  width: 1170px;
+}
+.frame {
+  display: flex;
+  padding: 8px 12px;
+}
+.student {
+  display: flex;
+  border-radius: 8px;
+  background-color: rgb(223, 229, 234);
+  padding: 8px 12px;
+  margin: auto;
+}
+.student_img {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+}
+.student_img_element {
+  width: 100px;
+}
+.student_department {
+  padding: 8px 12px;
+  background-color: rgb(240, 242, 244);
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.student_element {
+  align-items: flex-start;
+  width: 160px;
+}

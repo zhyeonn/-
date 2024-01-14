@@ -1,111 +1,154 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="home.css?after" />
-    <script src="https://kit.fontawesome.com/f668b9b848.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div class="overlay"></div>
-
-    <div class="login">
-      <a href="">로그인</a>
-      <a href="">회원가입</a>
-    </div>
-    <nav class="navbar">
-      <div class="logo">DATA SCIENCE</div>
-      <ul class="menu">
-        <li class="dropdown">
-          <button class="dropbtn">학과소개</button>
-          <ul class="hiddenmenu">
-            <li><a href="major.html">학과소개</a></li>
-            <li><a href="">학생회소개</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <button class="dropbtn">공지사항</button>
-          <ul class="hiddenmenu">
-            <li><a href="">공지사항</a></li>
-            <li><a href="">투표</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <button class="dropbtn">게시판</button>
-          <ul class="hiddenmenu">
-            <li><a href="">자유게시판</a></li>
-            <li><a href="">대여게시판</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <button class="dropbtn">기타</button>
-          <ul class="hiddenmenu">
-            <li><a href="./timetable.html">시간표</a></li>
-          </ul>
-        </li>
-      </ul>
-      <button id="hamburger"><i class="fa-solid fa-bars"></i></button>
-    </nav>
-
-
-
-    <main class="main">
-      <div class="wrap">
-        <div class="a">
-          <div class="vote"><h4>투표</h4></div>
-          <div class="double">
-            <div class="notice"><h4>공지사항</h4></div>
-            <div class="board"><h4>게시판</h4></div>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="home.css?after" />
+  <script src="https://kit.fontawesome.com/f668b9b848.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="overlay"></div>
+  
+  <div class="login">
+    <input type="button" value="로그인" id="btnOpen" class="btn" />
+    <a href="./join2.html">회원가입</a>
+  </div>
+  
+  <div id="modal">
+    <div id="content">
+      <input type="button" value="X" class="close" id="btnClose" />
+      <h3 style="text-align: center">로그인</h3>
+      <div>
+        <div class="type">
+          <label for="id">아이디</label>
+          <input type="id" style="width: 150px; height: 20px" />
+        </div>
+        <div class="type">
+          <label for="password">비밀번호</label>
+          <input type="password" id="pwd" style="width: 150px; height: 20px"/>
+        </div>
+        <div class="type">
+          <input type="button" value="로그인" id="btnCheck" />
+        </div>
+        <div class="type">
+          <a href="./join2.html">회원가입</a> | <a href="">아이디 찾기</a> |
+          <a href="">비밀번호 찾기</a>
         </div>
       </div>
-    </main>
-    <br />
-    <footer>
-      <div class="footer_title">
-        <h2>한국해양대학교 데이터사이언스</h2>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="logo"><a href="./home.html">DATA SCIENCE</a></div>
+    <ul class="menu">
+      <li class="dropdown">
+        <button class="dropbtn">학과소개</button>
+        <ul class="hiddenmenu">
+          <li><a href="./major.html">학과소개</a></li>
+          <li><a href="./student.html">학생회소개</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <button class="dropbtn">공지사항</button>
+        <ul class="hiddenmenu">
+          <li><a href="./notice.html">공지사항</a></li>
+          <li><a href="./join2.html">투표</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <button class="dropbtn">게시판</button>
+        <ul class="hiddenmenu">
+          <li><a href="">자유게시판</a></li>
+          <li><a href="">대여게시판</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <button class="dropbtn">기타</button>
+        <ul class="hiddenmenu">
+          <li><a href="./timetable.html">시간표</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button id="hamburger"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+
+  <div class="carousel">
+    <div class="carousel-container">
+      <div class="inner">
+        <img src="./images/제목 없음1.png" alt="">
       </div>
-      
+      <div class="inner">
+        <img src="./images/제목 없음2.png" alt="">
+      </div>
+      <div class="inner">
+        <img src="./images/제목 없음3.png" alt="">
+      </div>
+    </div>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+  </div>
+
+  <main class="main">
+    <div class="wrap">
+      <div class="frame">
+        <div class="double">
+          <div class="contents1">학과소개</div>
+          <div class="contents1">진행중인 투표</div>
+        </div>
+        <div class="double">
+          <div class="contents2">공지사항</div>
+          <div class="contents2">자유게시판</div>
+          <div class="contents2">시간표</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer_title">
+      <h2>한국해양대학교 데이터사이언스</h2>
+    </div>
+
+    <div class="footer_frame">
       <div class="footer_main">
         <div class="rows">
           <h3>Developers</h3>
-          
-          <ul>
+          <div>
             <h4>Front-end</h4>
-            <li>SanginJeong</li>
-            <li>Zhyeonn</li>
-          </ul>
-
-          <ul>
+            <p>sanginjeong | zhyeonn</p>
             <h4>Back-end</h4>
-            <li>dagomi</li>
-            <li>yarime</li>
+            <p>dagomi | yarime</p>
+          </div>
+        </div>
+
+        <div class="rows">
+          <h3>KMOU</h3>
+          <ul>
+            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">KMOU 홈페이지</a></li>
+            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">KMOU_LMS</a></li>
+            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">종합정보시스템</a></li>
+            <li><a href="https://cts.kmou.ac.kr/" target="_blank">Ocean-CTS</a></li>
           </ul>
         </div>
 
         <div class="rows">
-          <h3>Linked</h3>
-
+          <h3>Data Science</h3>
           <ul>
             <li><a href="https://www.instagram.com/kmou_datascience/" target="_blank">인스타그램</a></li>
-            <li><a href="https://youtu.be/RJZF3WwqfYQ?si=0PO7fgNtqQMnlIuh" target="_blank">학과소개</a></li>
-            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">공식 홈페이지</a></li>
-            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">종합정보시스템</a></li>
-            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">KMOU_LMS</a></li>
-            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">KMOU 홈페이지</a></li>
+            <li><a href="https://www.kmou.ac.kr/di/main.do" target="_blank">학과 홈페이지</a></li>
+            <li><a href="https://youtu.be/RJZF3WwqfYQ?si=0PO7fgNtqQMnlIuh" target="_blank">학과 소개 영상</a></li>
           </ul>
-
         </div>
       </div>
-      
       <div>
         <h4>오시는 길 : (49112) 부산광역시 영도구 태종로 727(동삼동) 한국해양대학교</h4>
-        <h4>학과 사무실 : 051-410-4370</h4>
+        <h4>학과 사무실 : 공대1관 127호 | ☎️ 051-410-4370</h4>
         <h4>문의 : sanginjeong07@gmail.com</h4>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="/main.js"></script>
-  </body>
+  <script src="/main.js"></script>
+</body>
 </html>

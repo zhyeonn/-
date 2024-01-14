@@ -1,9 +1,10 @@
 const $main = document.querySelector('main');
 const $addScheduleBtn = document.querySelectorAll('.addSchedule');
 const $addScheduleModal = document.querySelector('.addScheduleModal');
-const $completeTime = document.querySelector('#completeTime');
+const $completeAddSchedule = document.querySelector('#completeAddSchedule');
 const $start_time = document.querySelector('#start_time');
 const $end_time = document.querySelector('#end_time');
+const $cancelAddSchedule = document.querySelector('#cancelAddSchedule');
 
 
 const days = ['월','화','수','목','금'];
@@ -51,7 +52,7 @@ $addScheduleBtn.forEach((button,index)=>{
     openAddScheduleModal();
   });
 })
-$completeTime.addEventListener('click',()=>{
+$completeAddSchedule.addEventListener('click',()=>{
   addSchedule(selectedGrade);
 })
 
@@ -128,7 +129,7 @@ const renderSchedule = () => {
     cellMerge.innerHTML = `
     <div class = "btns">
     <button onclick="editSchedule('${v.day}',${v.grade},${v.startTime},${v.endTime})"><i class="fa-solid fa-pen"></i></button>
-    <button onclick="deleteSchedule()"><i class="fa-solid fa-trash"></i></button>
+    <button onclick="deleteSchedule('${v.day}',${v.grade},${v.startTime},${v.endTime})"><i class="fa-solid fa-trash"></i></button>
     </div>
     <div>${v.lectureName}</div>
     `
@@ -142,24 +143,33 @@ const renderSchedule = () => {
   })
 }
 
+//편집을 누르고 취소를 누르면 다시 되돌려야 함
+let isClickCancel = false;
+$cancelAddSchedule.addEventListener('click',()=>{
+  closeAddScheduleModal();
+})
+
 const editSchedule = (day,grade,startTime,endTime) => {
   openAddScheduleModal();
-  // 해당 객체를 찾아서 삭제하고 완료버튼을 누른다. -> 다시 객체순회 렌더링 -> display : none 이 남아있어서 문제가있음
-  schedule.forEach((v,i)=>{
-    if((v.day === day) && (v.grade === grade) && (v.startTime == startTime) && (v.endTime === endTime) ){
-      schedule.splice(i,1);
-      console.log(schedule);
-    }
-  })
-  // 객체삭제후 해당 display 까지 원래대로 돌려놓는다.
-  const cancelMergeCell = document.querySelector(`#${day}-${grade}-${startTime}`);
-  cancelMergeCell.setAttribute('rowspan','');
-  cancelMergeCell.style.backgroundColor = 'white';
-  cancelMergeCell.textContent = '';
-  for(let i=startTime+1; i<endTime; i++){
-    document.querySelector(`#${day}-${grade}-${i}`).style.display = 'table-cell';
+  if(isClickCancel === true){
+    isClickCancel = false;
+    return
   }
+  deleteSchedule(day,grade,startTime,endTime);
 }
-// 편집 버튼 누르면 해당 객체의 display 복구 시키고 다시 그리는 느낌
 
-// 나중에 편집할때 selectedGrade가 문제가 있으면 고쳐보고 안되면 애초에 add버튼을 한 개만 만들고 모달창에서 학년선택
+const deleteSchedule = (day,grade,startTime,endTime) => {
+    schedule.forEach((v,i)=>{
+      if((v.day === day) && (v.grade === grade) && (v.startTime == startTime) && (v.endTime === endTime) ){
+        schedule.splice(i,1);
+        console.log(schedule);
+      }
+    })
+    const cancelMergeCell = document.querySelector(`#${day}-${grade}-${startTime}`);
+    cancelMergeCell.setAttribute('rowspan','');
+    cancelMergeCell.style.backgroundColor = 'white';
+    cancelMergeCell.textContent = '';
+    for(let i=startTime+1; i<endTime; i++){
+      document.querySelector(`#${day}-${grade}-${i}`).style.display = 'table-cell';
+    }
+}

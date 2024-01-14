@@ -51,7 +51,7 @@ th {
   top: 30%;
   left: 40%;
   z-index: 200;
-  width: 400px;
+  width: 20rem;
   padding: 12px 18px;
 }
 .addScheduleModal > h3{
@@ -68,11 +68,11 @@ th {
 .buttonArea{
   text-align: right;
 }
-#completeTime{
+#completeAddSchedule,#cancelAddSchedule{
   padding: 6px 12px;
   color: rgb(44,48,145);
 }
-#completeTime:hover{
+#completeAddSchedule:hover,#cancelAddSchedule:hover{
   color: white;
   background-color: rgb(44,48,145);
 }
@@ -91,3 +91,17 @@ th {
   background: rgb(44,48,145);
 }
 
+@media screen and (max-width:48rem) {
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+  .addScheduleModal{
+    left: 10%;
+    top: 10%;
+    width: 70%;
+  }
+  th{
+    padding: 8px 20px;
+  }
+}
