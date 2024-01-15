@@ -1,24 +1,34 @@
-button{
+button {
   background: none;
   border: none;
   color: white;
 }
-.overlay.active{
+.overlay.active {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 여기서 rgba의 마지막 값은 투명도를 나타냄 */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* 여기서 rgba의 마지막 값은 투명도를 나타냄 */
   display: block;
 }
-.overlay.strongActive{
+.overlay.strongActive {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 여기서 rgba의 마지막 값은 투명도를 나타냄 */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* 여기서 rgba의 마지막 값은 투명도를 나타냄 */
   display: block;
   z-index: 200;
 }
@@ -36,201 +46,6 @@ button{
   background-color: rgb(44, 48, 145);
   color: white;
 }
-body {
-  margin: 0;
-}
-.navbar {
-  display: grid;
-  grid-template-columns: 3fr 9fr;
-  text-align: center;
-  align-items: center;
-  color: white;
-  background-color: rgb(44, 48, 145);
-  padding: 8px 12px;
-  position: sticky;
-  top: 0;
-  z-index: 99;
-}
-.logo a{
-  text-decoration: none;
-  color: white;
-}
-.menu {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  padding-left: 0;
-}
-.menu a {
-  text-decoration: none;
-  color: white;
-}
-.menu li:hover > a {
-  color: rgb(44, 48, 145);
-  background-color: white;
-  border-radius: 4px;
-}
-.dropbtn {
-  padding: 8px 38px;
-}
-.dropdown{
-  position: relative;
-  display: inline-block;
-}
-.hiddenmenu {
-  width: 100%;
-  display: none; 
-  flex-direction: column;
-  top: 30px;
-  position: absolute;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background-color: rgb(44, 48, 145);
-  border-radius: 4px;
-
-}
-.hiddenmenu > li {
-  z-index: 99;
-  padding: 12px 18px;
-  display: inline-block;
-}
-.hiddenmenu > li:hover {
-  background-color: white;
-}
-.dropdown {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-.hiddenmenu > li > a {
-  display: flex;
-  width: 100%;
-}
-
-.carousel{
-  width: 100%;
-  overflow: hidden;
-}
-.carousel button{
-  color: black;
-}
-.carousel img{
-  width: 100vw;
-}
-.inner{
-  width: 100%;
-}
-.carousel-container{
-  display: flex;
-}
-
-.icons {
-  color: white;
-  padding-left: 0;
-  margin: 0;
-  font-size: 30px;
-  position: relative;
-  right: 30px;
-}
-#hamburger {
-  position: absolute;
-  right: 10px;
-  font-size: 24px;
-  display: none;
-}
-#hamburger:hover{
-  background-color: white;
-  color: rgb(44, 48, 145);
-}
-
-.main {
-  text-align: center;
-}
-.wrap {
-  display: inline-block;
-  width: 1170px;
-}
-
-.frame {
-  display: inline-block;
-  flex-direction: column;
-  justify-content: center;
-
-  width: 1000px;
-}
-.double {
-  display: flex;
-  /* background-color: aliceblue; */
-  padding: 8px 12px;
-  margin: 0px 8px;
-  justify-content: space-around;
-  height: 200px;
-}
-.contents1 {
-  display: flex;
-  /* background-color: bisque; */
-  padding: 8px 12px;
-  margin: 10px;
-  width: 100%;
-  border: 3px solid rgb(44, 48, 145);
-  border-radius: 10px;
-}
-.contents2 {
-  display: flex;
-  /* background-color: bisque; */
-  padding: 8px 12px;
-  margin: 10px;
-  width: 100%;
-  border: 3px solid rgb(44, 48, 145);
-  border-radius: 10px;
-}
-footer {
-  padding: 20px;
-  background-color: rgb(44, 48, 145);
-  color: white;
-}
-.footer_title {
-  text-align: center;
-}
-.footer_frame {
-  width: 800px;
-  margin: auto;
-}
-/* .footer_main {
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 100px;
-} */
-.footer_main {
-  /* background-color: #fff; */
-  display: flex;
-  justify-content: space-around;
-}
-
-.rows {
-  width: 180px;
-  background-color: rgb(219, 219, 230);
-  border-radius: 12px;
-  padding: 12px 24px;
-  color: rgb(44, 48, 145);
-  text-align: center;
-}
-
-.rows ul {
-  list-style: none;
-  padding: 0;
-}
-.rows li {
-  padding: 10px 0px;
-}
-.rows a {
-  text-decoration: none;
-  color: rgb(44, 48, 145);
-}
-
-
 #modal {
   display: none;
   z-index: 100;
@@ -248,6 +63,9 @@ footer {
   position: relative;
   background-color: #fff;
   border-radius: 4px;
+}
+#modal > #content h3 {
+  text-align: center;
 }
 
 #modal .close {
@@ -286,6 +104,9 @@ footer {
   justify-content: center;
   padding: 6px 10px;
 }
+.type a {
+  padding: 0px 8px;
+}
 a {
   text-decoration: none;
   color: black;
@@ -309,26 +130,210 @@ label {
   cursor: pointer;
   color: white;
 }
+body {
+  margin: 0;
+}
+.navbar {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  text-align: center;
+  align-items: center;
+  color: white;
+  background-color: rgb(44, 48, 145);
+  padding: 8px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+.logo a {
+  text-decoration: none;
+  color: white;
+}
+.menu {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding-left: 0;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+.menu li:hover > a {
+  color: rgb(44, 48, 145);
+  background-color: white;
+  border-radius: 4px;
+}
 
+.dropbtn {
+  padding: 8px 38px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.hiddenmenu {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  top: 30px;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(44, 48, 145);
+  border-radius: 4px;
+}
+.hiddenmenu > li {
+  z-index: 99;
+  padding: 12px 18px;
+  display: inline-block;
+  font-size: 14px;
+}
+.hiddenmenu > li:hover {
+  background-color: white;
+}
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.hiddenmenu > li > a {
+  display: flex;
+  width: 100%;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+.carousel button {
+  color: black;
+}
+.carousel img {
+  width: 100vw;
+}
+.inner {
+  width: 100%;
+}
+.carousel-container {
+  display: flex;
+}
+
+.icons {
+  color: white;
+  padding-left: 0;
+  margin: 0;
+  font-size: 30px;
+  position: relative;
+  right: 30px;
+}
+#hamburger {
+  position: absolute;
+  right: 10px;
+  font-size: 24px;
+  display: none;
+}
+#hamburger:hover {
+  background-color: white;
+  color: rgb(44, 48, 145);
+}
+
+.main {
+  text-align: center;
+}
+.wrap {
+  display: inline-block;
+  width: 1170px;
+}
+
+.frame {
+  display: inline-block;
+  flex-direction: column;
+  justify-content: center;
+  width: 1000px;
+}
+.double {
+  display: flex;
+  padding: 8px 12px;
+  margin: 0px 8px;
+  justify-content: space-around;
+  height: 200px;
+}
+.contents1 {
+  display: flex;
+  padding: 8px 12px;
+  margin: 10px;
+  width: 100%;
+  border: 3px solid rgb(44, 48, 145);
+  border-radius: 10px;
+}
+.contents2 {
+  display: flex;
+  padding: 8px 12px;
+  margin: 10px;
+  width: 100%;
+  border: 3px solid rgb(44, 48, 145);
+  border-radius: 10px;
+}
+footer {
+  padding: 20px;
+  background-color: rgb(44, 48, 145);
+  color: white;
+}
+.footer_title {
+  text-align: center;
+}
+.footer_frame {
+  width: 800px;
+  margin: auto;
+}
+.footer_main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.rows {
+  width: 180px;
+  background-color: rgb(219, 219, 230);
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: rgb(44, 48, 145);
+  text-align: center;
+}
+
+.rows ul {
+  list-style: none;
+  padding: 0;
+}
+.rows li {
+  padding: 10px 0px;
+}
+.rows a {
+  text-decoration: none;
+  color: rgb(44, 48, 145);
+}
 @media screen and (max-width: 768px) {
-  .navbar{
+  .navbar {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  .menu{
+  .menu {
     width: 100%;
     display: none;
     flex-direction: column;
   }
-  .menu.active{
+  .menu.active {
     display: flex;
   }
-  .dropdown{ 
+  .dropdown {
     width: 100%;
     padding: 12px 0px;
   }
-  .hiddenmenu{
+  .hiddenmenu {
     width: 100%;
     margin-top: 10px;
     flex-direction: column;
@@ -336,7 +341,7 @@ label {
     position: static;
     display: none;
   }
-  #hamburger{
+  #hamburger {
     display: block;
   }
 }
